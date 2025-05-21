@@ -65,7 +65,7 @@ const images = [
 ];
 const list = document.querySelector('ul.gallery')
 function foo(arr) {
-    const markup = arr.map(item => 
+    const markup = arr.map(item =>
         `<li class="gallery-item">
         <a class="gallery-link" href="${item.original}">
          <img
@@ -77,16 +77,17 @@ function foo(arr) {
         </a>
        </li> 
         `)
-      list.insertAdjacentHTML('afterbegin', markup.join(" "))
+    list.insertAdjacentHTML('afterbegin', markup.join(" "))
 }
 foo(images)
-  
+
 list.addEventListener('click', (event) => {
     event.preventDefault()
-  if(!(event.target.nodeName==='IMG')) return
+    if (!(event.target.nodeName === 'IMG')) return
+    const imgModal = event.target.dataset.source
     const instance = basicLightbox.create(`
         <div class="modal">
-            <img src="${event.target.dataset.source}">
+            <img src="${imgModal}">
         </div>
     `)
     instance.show()
